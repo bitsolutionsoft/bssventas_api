@@ -1,7 +1,7 @@
-const Cliente=require('../model/model_cliente');
+const Permiso=require('../model/model_permiso');
 
 exports.create=(req,res)=>{
- Cliente.create(new Cliente(req.body),(error,data)=>{
+ Permiso.create(new Permiso(req.body),(error,data)=>{
     if(error){
         res.status(500).send({message:"Failed",res:error});
         return
@@ -10,7 +10,7 @@ exports.create=(req,res)=>{
  })
 }
 exports.update=(req,res)=>{
-    Cliente.update(new Cliente(req.body),(error,data)=>{
+    Permiso.update(new Permiso(req.body),(error,data)=>{
        if(error){
         if(error.kind==="not_found"){
            res.status(404).send({message:"Failed",res:error});
@@ -23,8 +23,23 @@ exports.update=(req,res)=>{
    }
   
 exports.view=(req,res)=>{
-    Cliente.view((error,data)=>{
+    Permiso.view((error,data)=>{
        if(error){
+        console.log(error)
+        if(error.kind==="not_found"){
+           res.status(404).send({message:"Failed",res:error});
+           return
+        }
+        res.status(500).send({message:"Failed",res:error});
+       }
+       res.send(data);
+    })
+   }
+
+   exports.viewone=(req,res)=>{
+    Permiso.viewone(req.params.id,(error,data)=>{
+       if(error){
+        console.log(error)
         if(error.kind==="not_found"){
            res.status(404).send({message:"Failed",res:error});
            return
@@ -35,7 +50,7 @@ exports.view=(req,res)=>{
     })
    }
    exports.delete=(req,res)=>{
-    Cliente.delete((error,data)=>{
+    Permiso.delete(req.params.id,(error,data)=>{
         if(error){
             if(error.kind==="not_found"){
                res.status(404).send({message:"Failed",res:error});
