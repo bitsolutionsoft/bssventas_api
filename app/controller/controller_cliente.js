@@ -35,7 +35,7 @@ exports.view=(req,res)=>{
     })
    }
    exports.delete=(req,res)=>{
-    Cliente.delete((error,data)=>{
+    Cliente.delete(req.params.id,(error,data)=>{
         if(error){
             if(error.kind==="not_found"){
                res.status(404).send({message:"Failed",res:error});

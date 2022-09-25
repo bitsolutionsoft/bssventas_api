@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `abono_proveedor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `abono_proveedor` (
-  `idabonno` int NOT NULL AUTO_INCREMENT,
+  `idabono` int NOT NULL AUTO_INCREMENT,
   `idcuenta` int DEFAULT NULL,
   `abono` decimal(12,2) DEFAULT NULL,
   `observacion` varchar(60) DEFAULT NULL,
   `estado` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idabonno`),
+  PRIMARY KEY (`idabono`),
   KEY `fk_abono` (`idcuenta`),
   CONSTRAINT `fk_abono` FOREIGN KEY (`idcuenta`) REFERENCES `cuenta_proveedor` (`idcuenta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -395,7 +395,6 @@ CREATE TABLE `lote` (
   `cantidad` int DEFAULT NULL,
   `precio_compra` decimal(8,2) DEFAULT NULL,
   `precio_mayorista` decimal(8,2) DEFAULT NULL,
-  `precio_mayor` decimal(8,2) DEFAULT NULL,
   `precio_unidad` decimal(8,2) DEFAULT NULL,
   `estado` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`idlote`),
@@ -410,7 +409,7 @@ CREATE TABLE `lote` (
 
 LOCK TABLES `lote` WRITE;
 /*!40000 ALTER TABLE `lote` DISABLE KEYS */;
-INSERT INTO `lote` VALUES (5,84524930,-1,30.00,40.00,45.00,50.00,'No Activo'),(6,34,23,90.00,95.00,100.00,110.00,'Activo'),(10,40,19,15.00,18.00,23.00,30.00,'Activo'),(12,2,0,20.00,25.00,30.00,40.00,'No Activo'),(18,84524931,10,20.00,30.00,40.00,50.00,'Activo'),(26,2,7,90.00,110.00,120.00,130.00,'Activo'),(27,84524932,89,90.00,80.00,70.00,90.00,'Activo'),(28,7879,3,3.00,4.00,5.00,5.00,'Activo'),(29,84524933,6,8.00,9.00,88.00,88.00,'Activo'),(30,84524934,8,8.00,8.00,8.00,8.00,'Activo'),(31,84524935,9,8.00,8.00,8.00,8.00,'Activo'),(32,1278471294,6,7.00,7.00,7.00,7.00,'Activo'),(33,2,99,9.00,9.00,9.00,9.00,'Activo'),(34,42412,20,3.00,15.00,18.00,20.00,'Activo'),(35,1278471295,23,20.00,30.00,35.00,40.00,'Activo');
+INSERT INTO `lote` VALUES (5,84524930,-1,30.00,40.00,50.00,'No Activo'),(6,34,23,90.00,95.00,110.00,'Activo'),(10,40,19,15.00,18.00,30.00,'Activo'),(12,2,0,20.00,25.00,40.00,'No Activo'),(18,84524931,10,20.00,30.00,50.00,'Activo'),(26,2,7,90.00,110.00,130.00,'Activo'),(27,84524932,89,90.00,80.00,90.00,'Activo'),(28,7879,3,3.00,4.00,5.00,'Activo'),(29,84524933,6,8.00,9.00,88.00,'Activo'),(30,84524934,8,8.00,8.00,8.00,'Activo'),(31,84524935,9,8.00,8.00,8.00,'Activo'),(32,1278471294,6,7.00,7.00,7.00,'Activo'),(33,2,99,9.00,9.00,9.00,'Activo'),(34,42412,20,3.00,15.00,20.00,'Activo'),(35,1278471295,23,20.00,30.00,40.00,'Activo');
 /*!40000 ALTER TABLE `lote` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -599,11 +598,9 @@ CREATE TABLE `proveedor` (
   `idProveedor` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   `apellido` varchar(45) DEFAULT NULL,
-  `telefonoUno` int DEFAULT NULL,
-  `telefonoDos` int DEFAULT NULL,
+  `telefono` int DEFAULT NULL,
   `compania` varchar(45) DEFAULT NULL,
   `direccion` varchar(60) DEFAULT NULL,
-  `sexo` varchar(15) DEFAULT NULL,
   `estado` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`idProveedor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -615,7 +612,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (1,'Diego Carlos','Hernandez Hernandez',45450578,NULL,'Accesos gt','Quetzaltenango, Guatemala','Masculino','Activo'),(2,'oscar ','gomez sa',90,0,'','',NULL,'Activo'),(3,'ghkjsghks','gjhgjdsghg',8998,0,'','','Hombre','Activo'),(4,'ghkjgh','gjhdsgh',111,11,'dgkjdgggggggggggg','jgskjkgsgjs','Hombre','Activo'),(5,'jkghskjhgs','hgsgjkahgk',848484,9999,'jgnskgn','gsdgsdddddddddgh','Hombre','Activo'),(6,'nkjnkj','hjkhkj',888,888,'jkjkjhjk','jhjkhjkhkj','Hombre','No Activo'),(7,'carlos','Slim',87879809,80980980,'9','789','Hombre','Activo');
+INSERT INTO `proveedor` VALUES (1,'Diego Carlos','Hernandez Hernandez',45450578,'Accesos gt','Quetzaltenango, Guatemala','Activo'),(2,'oscar ','gomez sa',90,'','','Activo'),(3,'ghkjsghks','gjhgjdsghg',8998,'','','Activo'),(4,'ghkjgh','gjhdsgh',111,'dgkjdgggggggggggg','jgskjkgsgjs','Activo'),(5,'jkghskjhgs','hgsgjkahgk',848484,'jgnskgn','gsdgsdddddddddgh','Activo'),(6,'nkjnkj','hjkhkj',888,'jkjkjhjk','jhjkhjkhkj','No Activo'),(7,'carlos','Slim',87879809,'9','789','Activo');
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1304,11 +1301,11 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingreso_lote`(
 in _idlote int(16),
@@ -1316,7 +1313,7 @@ in _idproducto int(16),
 in _cantidad int(16), 
 in _precio_compra decimal(8,2),
 in _precio_mayorista decimal(8,2),
-in _precio_mayor decimal(8,2),
+
 in _precio_unidad decimal(8,2),
 in _estado varchar(16),
 in accion varchar(10)
@@ -1340,18 +1337,18 @@ case accion
 when 'new' then  
 if _idproducto <= 0 then
 select max(idproducto) into codigoproducto from producto;
-insert into lote (idlote, idproducto, cantidad, precio_compra,precio_mayorista, precio_mayor, precio_unidad, estado)
-values (_idlote, codigoproducto,_cantidad,_precio_compra,_precio_mayorista,_precio_mayor,_precio_unidad, _estado);
+insert into lote (idlote, idproducto, cantidad, precio_compra,precio_mayorista,  precio_unidad, estado)
+values (_idlote, codigoproducto,_cantidad,_precio_compra,_precio_mayorista,_precio_unidad, _estado);
 elseif _idproducto > 0 then
-insert into lote (idlote, idproducto, cantidad, precio_compra,precio_mayorista, precio_mayor, precio_unidad, estado)
-values (_idlote, _idproducto,_cantidad,_precio_compra,_precio_mayorista,_precio_mayor,_precio_unidad, _estado);
+insert into lote (idlote, idproducto, cantidad, precio_compra,precio_mayorista, precio_unidad, estado)
+values (_idlote, _idproducto,_cantidad,_precio_compra,_precio_mayorista,_precio_unidad, _estado);
 
 end if; 
 
 when 'update' then
 update lote
 set idproducto=_idproducto, cantidad=_cantidad, precio_compra= _precio_compra,precio_mayorista=_precio_mayorista, 
-precio_mayor=_precio_mayor, precio_unidad=_precio_unidad, estado=_estado
+ precio_unidad=_precio_unidad, estado=_estado
   where idlote = _idlote;
   
   when 'add' then
@@ -1504,21 +1501,19 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingreso_proveedor`(
 in _idProveedor int(16),
 in _nombre varchar(60),
 in _apellido varchar(45), 
-in _telefonoUno int(12),
-in _telefonoDos int(12),
+in _telefono int(12),
 in _compania varchar(45),
 in _direccion varchar(60),
-in _sexo varchar(15),
 in _estado varchar(16),
 in accion varchar(10)
 )
@@ -1538,13 +1533,13 @@ RESIGNAL;
 START TRANSACTION;
 case accion
 when 'new' then  
-insert into proveedor (idProveedor, nombre, apellido, telefonoUno,telefonoDos, compania, direccion, sexo,estado)
-values (_idProveedor, _nombre,_apellido,_telefonoUno,_telefonoDos,_compania,_direccion,_sexo,_estado);
+insert into proveedor (idProveedor, nombre, apellido, telefono, compania, direccion, estado)
+values (_idProveedor, _nombre,_apellido,_telefono,_compania,_direccion,_estado);
 
 
 when 'update' then
 update proveedor
-set nombre=_nombre, apellido=_apellido, telefonoUno= _telefonoUno,telefonoDos=_telefonoDos, compania=_compania,
+set nombre=_nombre, apellido=_apellido, telefono= _telefono, compania=_compania,
 direccion=_direccion, sexo=_sexo, estado=_estado
   where idProveedor = _idProveedor;
 
@@ -1683,4 +1678,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-24 12:42:44
+-- Dump completed on 2022-09-24 22:07:22

@@ -14,7 +14,7 @@ module.exports=app=>{
     const permiso =require("../controller/controller_permiso");
     //bienvenida
 app.get("/",(rep,res)=>{
-    res.json({message:"Bienvenido a farmacia api"})
+    res.json({message:"Bienvenido a bssventas api version 1.0"})
 });
 
 //usuario
@@ -39,5 +39,47 @@ app.post("/empleado",verifyToken,empleado.create);
 app.post("/empleado/update",verifyToken,empleado.update);
 app.get("/empleado/view",verifyToken,empleado.view);
 app.get("/empleado/delete/:id",verifyToken,empleado.delete);
+//proveedor
+app.post("/proveedor",verifyToken,proveedor.create);
+app.post("/proveedor/update",verifyToken,proveedor.update);
+app.get("/proveedor/view",verifyToken,proveedor.view);
+app.get("/proveedor/delete/:id",verifyToken,proveedor.delete);
 
+//Producto
+app.post("/producto",verifyToken,producto.create);
+app.post("/producto/update",verifyToken,producto.update);
+app.get("/producto/view",verifyToken,producto.view);
+app.get("/producto/delete/:id",verifyToken,producto.delete);
+
+//lote
+app.post("/lote",verifyToken,lote.create);
+app.post("/lote/update",verifyToken,lote.update);
+app.get("/lote/view",verifyToken,lote.view);
+app.get("/lote/delete/:id",verifyToken,lote.delete);
+//detalle_factura
+app.post("/detalle_factura",verifyToken,detalle_factura.create);
+app.post("/detalle_factura/update",verifyToken,detalle_factura.update);
+app.get("/detalle_factura/view",verifyToken,detalle_factura.view);
+app.get("/detalle_factura/delete/:id",verifyToken,detalle_factura.delete);
+
+//factura
+app.post("/factura",verifyToken,factura.create);
+app.post("/factura/update",verifyToken,factura.update);
+app.get("/factura/view",verifyToken,factura.view);
+app.get("/factura/delete/:id",verifyToken,factura.delete);
+//colocacion
+app.post("/colocacion",verifyToken,colocacion.create);
+app.post("/colocacion/update",verifyToken,colocacion.update);
+app.get("/colocacion/view",verifyToken,colocacion.view);
+app.get("/colocacion/delete/:id",verifyToken,colocacion.delete);
+//cuenta_proveedor
+app.post("/cuenta_proveedor",verifyToken,cuenta_proveedor.create);
+app.post("/cuenta_proveedor/update",verifyToken,cuenta_proveedor.update);
+app.get("/cuenta_proveedor/view",verifyToken,cuenta_proveedor.view);
+app.get("/cuenta_proveedor/delete/:id",verifyToken,cuenta_proveedor.delete);
+//abono_proveedor
+app.post("/abono_proveedor",verifyToken,abono_proveedor.create);
+app.post("/abono_proveedor/update",verifyToken,abono_proveedor.update);
+app.get("/abono_proveedor/view",verifyToken,abono_proveedor.view);
+app.get("/abono_proveedor/delete/:id",verifyToken,abono_proveedor.delete);
 };
