@@ -46,6 +46,31 @@ LOCK TABLES `abono_proveedor` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ajuste`
+--
+
+DROP TABLE IF EXISTS `ajuste`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ajuste` (
+  `id` int NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `descripcion` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ajuste`
+--
+
+LOCK TABLES `ajuste` WRITE;
+/*!40000 ALTER TABLE `ajuste` DISABLE KEYS */;
+INSERT INTO `ajuste` VALUES (1,'BssVentas','Punto de ventas');
+/*!40000 ALTER TABLE `ajuste` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cliente`
 --
 
@@ -60,8 +85,9 @@ CREATE TABLE `cliente` (
   `direccion` varchar(60) DEFAULT NULL,
   `sexo` varchar(15) DEFAULT NULL,
   `nit` varchar(16) DEFAULT NULL,
+  `estado` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`idcliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +96,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Diego Abel','Péres Gomez',8080808,'90909098','Hombre','CF'),(2,'Melany Aide','Péres Gomez',88976789,'89452343','Mujer','CF'),(4,'oscar','de leon',2323,'2323','Hombre','CF'),(5,'jgsdkjgd','jkshg',9,'8','Hombre','89'),(6,'jjhjkhkljh','hjjhkjh',98088889,'88998789','Hombre','8890vdv'),(7,'Oscar Guillermo','Gomez Juarez',12345678,'989889','Hombre','r80324\'2'),(8,'Emilio ','García',89646,'54039','Hombre','grgjo'),(9,'Hercules','Gomez',543534,'555','Hombre','553453'),(10,'Fernando','Ramos',57859,'3957','Hombre','795'),(11,'Alejandro','Perez',49544,'5345','Hombre','5iu54'),(14,'carlos','Slim',78623590,'53985739','Hombre','gh39');
+INSERT INTO `cliente` VALUES (1,'Diego Abel','Péres Gomez',8080808,'90909098','Hombre','CF','Activo'),(2,'Melany Aide','Péres Gomez',88976789,'89452343','Mujer','CF','Activo'),(4,'oscar','de leon',2323,'2323','Hombre','CF','Activo'),(5,'Fernando Alonso','Gomez García',52357823,'San Francisco el Alto','Hombre','89gsdg','Activo'),(6,'jjhjkhkljh','hjjhkjh',98088889,'88998789','Hombre','8890vdv','Activo'),(7,'Oscar Guillermo','Gomez Juarez',12345678,'989889','Hombre','r80324\'2','Activo'),(8,'Emilio ','García',89646,'54039','Hombre','grgjo','Activo'),(9,'Hercules','Gomez',543534,'555','Hombre','553453','Activo'),(10,'Fernando','Ramos',57859,'3957','Hombre','795','Activo'),(11,'Alejandro','Perez',49544,'5345','Hombre','5iu54','Activo'),(14,'carlos','Slim',78623590,'53985739','Hombre','gh39','Activo'),(15,'Oscar','Gome',35353254,'Xela','Hombre','5345325235','Activo');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +172,7 @@ CREATE TABLE `detalle_factura` (
   KEY `fk_factura_idx` (`id_factura`),
   CONSTRAINT `fk_factura` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`idfactura`),
   CONSTRAINT `fk_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`idproducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +181,7 @@ CREATE TABLE `detalle_factura` (
 
 LOCK TABLES `detalle_factura` WRITE;
 /*!40000 ALTER TABLE `detalle_factura` DISABLE KEYS */;
-INSERT INTO `detalle_factura` VALUES (3,1,2,5,55.00,275.00,NULL),(4,1,2,5,55.00,275.00,NULL),(6,1,2,3,55.00,165.00,NULL),(7,2,2,3,55.00,165.00,5),(8,2,2,3,55.00,165.00,5),(9,3,40,1,30.00,30.00,10),(10,3,2,1,40.00,40.00,12),(11,4,34,1,110.00,110.00,6),(12,4,84524931,1,50.00,50.00,18),(13,5,34,1,110.00,110.00,6),(14,5,84524930,1,50.00,50.00,5),(15,6,40,1,30.00,30.00,10),(16,6,2,1,40.00,40.00,12),(17,7,84524930,1,50.00,50.00,5),(18,7,34,1,95.00,95.00,6),(19,7,2,1,40.00,40.00,12),(20,7,40,1,18.00,18.00,10),(21,7,84524931,1,40.00,40.00,18),(22,8,84524931,1,50.00,50.00,18),(23,8,40,1,30.00,30.00,10),(24,9,40,1,30.00,30.00,10),(25,10,40,1,30.00,30.00,10),(26,11,2,1,40.00,40.00,12),(27,12,2,1,40.00,40.00,12),(28,13,2,1,40.00,40.00,12),(29,13,40,2,30.00,60.00,10),(30,13,84524930,1,50.00,50.00,5),(31,13,34,1,110.00,110.00,6),(32,13,84524931,1,50.00,50.00,18),(33,14,40,1,30.00,30.00,10),(34,14,34,1,110.00,110.00,6),(35,15,2,1,40.00,40.00,12),(36,16,2,1,40.00,40.00,12),(37,16,34,1,110.00,110.00,6),(38,17,40,1,30.00,30.00,10),(39,18,34,1,110.00,110.00,6),(40,18,2,1,40.00,40.00,12),(41,18,40,1,30.00,30.00,10),(42,19,84524930,1,50.00,50.00,5),(43,19,34,1,110.00,110.00,6),(44,20,34,1,110.00,110.00,6),(45,21,2,1,40.00,40.00,12),(46,21,34,1,110.00,110.00,6),(47,22,40,1,30.00,30.00,10),(48,22,34,1,110.00,110.00,6),(49,23,40,2,30.00,60.00,10),(50,24,34,1,110.00,110.00,6),(51,24,40,1,30.00,30.00,10),(52,25,84524931,1,50.00,50.00,18),(53,25,40,1,30.00,30.00,10),(54,26,34,1,110.00,110.00,6),(55,26,34,1,110.00,110.00,6),(56,26,84524931,1,50.00,50.00,18),(57,28,34,1,110.00,110.00,6),(58,28,84524930,1,50.00,50.00,5),(59,29,84524930,1,50.00,50.00,5),(60,30,34,1,110.00,110.00,6),(61,31,40,1,30.00,30.00,10),(62,32,84524930,2,50.00,100.00,5),(63,33,40,1,30.00,30.00,10),(64,34,84524930,1,50.00,50.00,5),(65,35,40,1,30.00,30.00,10),(66,36,34,1,110.00,110.00,6),(67,37,34,1,110.00,110.00,6),(68,38,34,1,110.00,110.00,6),(69,39,40,1,30.00,30.00,10),(70,40,40,1,30.00,30.00,10),(71,41,40,1,30.00,30.00,10),(72,42,84524930,1,50.00,50.00,5),(73,42,34,1,110.00,110.00,6),(74,42,84524930,1,50.00,50.00,5),(75,42,34,6,110.00,660.00,6),(76,44,40,1,30.00,30.00,10),(77,45,34,2,110.00,220.00,6),(78,46,40,1,30.00,30.00,10),(79,47,40,1,30.00,30.00,10),(80,48,2,1,130.00,130.00,26),(81,49,40,1,30.00,30.00,10),(82,50,2,1,130.00,130.00,26),(83,51,84524931,1,50.00,50.00,18),(84,52,40,1,30.00,30.00,10),(85,52,2,1,130.00,130.00,26),(86,52,40,1,30.00,30.00,10),(87,52,2,2,130.00,260.00,26),(88,54,84524932,1,90.00,90.00,27),(89,54,84524933,1,88.00,88.00,29),(90,55,84524931,1,50.00,50.00,18),(91,55,2,1,130.00,130.00,26),(92,55,40,1,30.00,30.00,10),(93,55,34,1,110.00,110.00,6),(94,55,1278471294,1,7.00,7.00,32),(95,56,40,1,30.00,30.00,10),(96,56,2,1,130.00,130.00,26),(97,57,84524931,1,50.00,50.00,18),(98,58,84524931,1,50.00,50.00,18),(99,58,40,1,30.00,30.00,10),(100,58,2,1,130.00,130.00,26);
+INSERT INTO `detalle_factura` VALUES (3,1,2,5,55.00,275.00,NULL),(4,1,2,5,55.00,275.00,NULL),(6,1,2,3,55.00,165.00,NULL),(7,2,2,3,55.00,165.00,5),(8,2,2,3,55.00,165.00,5),(9,3,40,1,30.00,30.00,10),(10,3,2,1,40.00,40.00,12),(11,4,34,1,110.00,110.00,6),(12,4,84524931,1,50.00,50.00,18),(13,5,34,1,110.00,110.00,6),(14,5,84524930,1,50.00,50.00,5),(15,6,40,1,30.00,30.00,10),(16,6,2,1,40.00,40.00,12),(17,7,84524930,1,50.00,50.00,5),(18,7,34,1,95.00,95.00,6),(19,7,2,1,40.00,40.00,12),(20,7,40,1,18.00,18.00,10),(21,7,84524931,1,40.00,40.00,18),(22,8,84524931,1,50.00,50.00,18),(23,8,40,1,30.00,30.00,10),(24,9,40,1,30.00,30.00,10),(25,10,40,1,30.00,30.00,10),(26,11,2,1,40.00,40.00,12),(27,12,2,1,40.00,40.00,12),(28,13,2,1,40.00,40.00,12),(29,13,40,2,30.00,60.00,10),(30,13,84524930,1,50.00,50.00,5),(31,13,34,1,110.00,110.00,6),(32,13,84524931,1,50.00,50.00,18),(33,14,40,1,30.00,30.00,10),(34,14,34,1,110.00,110.00,6),(35,15,2,1,40.00,40.00,12),(36,16,2,1,40.00,40.00,12),(37,16,34,1,110.00,110.00,6),(38,17,40,1,30.00,30.00,10),(39,18,34,1,110.00,110.00,6),(40,18,2,1,40.00,40.00,12),(41,18,40,1,30.00,30.00,10),(42,19,84524930,1,50.00,50.00,5),(43,19,34,1,110.00,110.00,6),(44,20,34,1,110.00,110.00,6),(45,21,2,1,40.00,40.00,12),(46,21,34,1,110.00,110.00,6),(47,22,40,1,30.00,30.00,10),(48,22,34,1,110.00,110.00,6),(49,23,40,2,30.00,60.00,10),(50,24,34,1,110.00,110.00,6),(51,24,40,1,30.00,30.00,10),(52,25,84524931,1,50.00,50.00,18),(53,25,40,1,30.00,30.00,10),(54,26,34,1,110.00,110.00,6),(55,26,34,1,110.00,110.00,6),(56,26,84524931,1,50.00,50.00,18),(57,28,34,1,110.00,110.00,6),(58,28,84524930,1,50.00,50.00,5),(59,29,84524930,1,50.00,50.00,5),(60,30,34,1,110.00,110.00,6),(61,31,40,1,30.00,30.00,10),(62,32,84524930,2,50.00,100.00,5),(63,33,40,1,30.00,30.00,10),(64,34,84524930,1,50.00,50.00,5),(65,35,40,1,30.00,30.00,10),(66,36,34,1,110.00,110.00,6),(67,37,34,1,110.00,110.00,6),(68,38,34,1,110.00,110.00,6),(69,39,40,1,30.00,30.00,10),(70,40,40,1,30.00,30.00,10),(71,41,40,1,30.00,30.00,10),(72,42,84524930,1,50.00,50.00,5),(73,42,34,1,110.00,110.00,6),(74,42,84524930,1,50.00,50.00,5),(75,42,34,6,110.00,660.00,6),(76,44,40,1,30.00,30.00,10),(77,45,34,2,110.00,220.00,6),(78,46,40,1,30.00,30.00,10),(79,47,40,1,30.00,30.00,10),(80,48,2,1,130.00,130.00,26),(81,49,40,1,30.00,30.00,10),(82,50,2,1,130.00,130.00,26),(83,51,84524931,1,50.00,50.00,18),(84,52,40,1,30.00,30.00,10),(85,52,2,1,130.00,130.00,26),(86,52,40,1,30.00,30.00,10),(87,52,2,2,130.00,260.00,26),(88,54,84524932,1,90.00,90.00,27),(89,54,84524933,1,88.00,88.00,29),(90,55,84524931,1,50.00,50.00,18),(91,55,2,1,130.00,130.00,26),(92,55,40,1,30.00,30.00,10),(93,55,34,1,110.00,110.00,6),(94,55,1278471294,1,7.00,7.00,32),(95,56,40,1,30.00,30.00,10),(96,56,2,1,130.00,130.00,26),(97,57,84524931,1,50.00,50.00,18),(98,58,84524931,1,50.00,50.00,18),(99,58,40,1,30.00,30.00,10),(100,58,2,1,130.00,130.00,26),(101,60,2,1,9.00,9.00,33),(102,61,2,1,9.00,9.00,33),(103,62,34,1,110.00,110.00,6),(104,63,2,1,130.00,130.00,26),(105,64,2,1,130.00,130.00,26),(106,65,2,1,9.00,9.00,33),(107,66,34,1,110.00,110.00,6),(108,67,2,1,130.00,130.00,26),(109,68,2,1,130.00,130.00,26),(110,69,2,1,130.00,130.00,26),(111,70,2,1,9.00,9.00,33),(112,71,40,1,30.00,30.00,10),(113,72,2,1,9.00,9.00,33),(114,73,2,1,9.00,9.00,33),(115,74,2,1,9.00,9.00,33),(116,75,2,1,9.00,9.00,33),(117,76,2,1,9.00,9.00,33),(118,77,2,1,9.00,9.00,33),(119,78,2,1,9.00,9.00,33),(120,79,2,1,9.00,9.00,33),(121,80,2,1,9.00,9.00,33),(122,81,2,1,9.00,9.00,33),(123,82,2,1,9.00,9.00,33),(124,83,2,1,9.00,9.00,33),(125,84,2,1,9.00,9.00,33),(126,85,2,1,9.00,9.00,33),(127,86,2,1,9.00,9.00,33),(128,87,2,1,9.00,9.00,33),(129,88,2,1,9.00,9.00,33),(130,89,2,1,9.00,9.00,33),(131,90,2,1,9.00,9.00,33),(132,91,2,1,9.00,9.00,33),(133,92,2,1,9.00,9.00,33),(134,93,2,1,9.00,9.00,33),(135,94,2,2,130.00,260.00,26),(136,95,2,1,9.00,9.00,33),(137,96,2,1,9.00,9.00,33),(138,97,2,1,9.00,9.00,33),(139,98,2,1,9.00,9.00,33),(140,99,2,1,9.00,9.00,33);
 /*!40000 ALTER TABLE `detalle_factura` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -316,11 +342,11 @@ CREATE TABLE `empleado` (
   `nombre` varchar(100) DEFAULT NULL,
   `apellido` varchar(100) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
-  `dpi` varchar(11) DEFAULT NULL,
+  `dpi` varchar(13) DEFAULT NULL,
   `telefono` int DEFAULT NULL,
   `estado` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`idempleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -329,7 +355,7 @@ CREATE TABLE `empleado` (
 
 LOCK TABLES `empleado` WRITE;
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
-INSERT INTO `empleado` VALUES (1,'Julio Cesar','Gomez','San Francisco el alto','154232',12345,'Activo');
+INSERT INTO `empleado` VALUES (1,'Julio Cesar','Gomez','San Francisco el alto','154232',12345,'Activo'),(2,'Jose ','Hernández','San Cristobal','5454253425532',23534253,'Activo');
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -369,7 +395,7 @@ CREATE TABLE `factura` (
   PRIMARY KEY (`idfactura`),
   KEY `fk_clilente_idx` (`idcliente`),
   CONSTRAINT `fk_clilente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -378,7 +404,7 @@ CREATE TABLE `factura` (
 
 LOCK TABLES `factura` WRITE;
 /*!40000 ALTER TABLE `factura` DISABLE KEYS */;
-INSERT INTO `factura` VALUES (1,1,'2021-05-28 11:06:26','Vendido',NULL,715.00),(2,1,'2021-06-23 11:06:26','Vendido',NULL,330.00),(3,1,'2021-06-25 22:59:56','Vendido',NULL,70.00),(4,1,'2021-06-25 23:01:41','Vendido',NULL,160.00),(5,1,'2021-06-25 23:01:58','Vendido',NULL,160.00),(6,1,'2021-06-25 23:04:34','Vendido',NULL,70.00),(7,1,'2021-06-26 17:21:02','Vendido',NULL,243.00),(8,1,'2021-06-27 00:00:02','Vendido',NULL,80.00),(9,1,'2021-06-27 00:02:17','Vendido',NULL,30.00),(10,1,'2021-06-27 00:05:18','Vendido',NULL,30.00),(11,1,'2021-06-27 00:07:13','Vendido',NULL,40.00),(12,1,'2021-06-27 00:08:01','Vendido',NULL,40.00),(13,1,'2021-06-27 00:14:19','Vendido',NULL,310.00),(14,1,'2021-06-28 09:53:10','Vendido',NULL,140.00),(15,1,'2021-06-28 10:13:10','Vendido',NULL,40.00),(16,1,'2021-06-28 10:35:02','Vendido',NULL,150.00),(17,1,'2021-06-28 10:35:27','Vendido',NULL,30.00),(18,1,'2021-06-28 10:38:08','Vendido',NULL,180.00),(19,1,'2021-06-28 10:43:33','Vendido',NULL,160.00),(20,1,'2021-06-28 10:43:55','Vendido',NULL,110.00),(21,1,'2021-06-28 10:46:06','Vendido',NULL,150.00),(22,1,'2021-06-28 10:51:25','Vendido',NULL,140.00),(23,1,'2021-06-28 10:53:23','Vendido',NULL,60.00),(24,1,'2021-06-28 10:54:42','Vendido',NULL,140.00),(25,1,'2021-06-28 10:54:58','Vendido',NULL,80.00),(26,1,'2021-06-28 10:58:53','Vendido',NULL,270.00),(27,1,'2021-06-28 10:59:01','Vendido',NULL,NULL),(28,1,'2021-06-28 10:59:10','Vendido',NULL,160.00),(29,1,'2021-06-28 11:01:56','Vendido',NULL,50.00),(30,1,'2021-06-28 11:08:11','Vendido',NULL,110.00),(31,1,'2021-06-28 11:18:29','Vendido',NULL,30.00),(32,1,'2021-06-28 16:00:33','Vendido',NULL,100.00),(33,1,'2021-06-28 16:14:59','Vendido',NULL,30.00),(34,1,'2021-06-28 16:15:51','Vendido',NULL,50.00),(35,1,'2021-06-28 16:16:32','Vendido',NULL,30.00),(36,1,'2021-06-28 16:21:20','Vendido',NULL,110.00),(37,1,'2021-06-28 16:25:20','Vendido',NULL,110.00),(38,1,'2021-06-28 16:25:45','Vendido',NULL,110.00),(39,1,'2021-06-28 16:28:16','Vendido',NULL,30.00),(40,1,'2021-06-28 16:29:41','Vendido',NULL,30.00),(41,1,'2021-06-28 16:36:59','Vendido',NULL,30.00),(42,1,'2021-06-28 18:55:06','Vendido',NULL,870.00),(43,1,'2021-06-28 19:00:48','Vendido',NULL,NULL),(44,1,'2021-06-28 19:01:20','Vendido',NULL,30.00),(45,1,'2021-06-28 19:03:35','Vendido',NULL,220.00),(46,1,'2021-06-28 21:14:17','Vendido',NULL,30.00),(47,1,'2021-06-28 21:16:14','Vendido',NULL,30.00),(48,1,'2021-06-28 21:19:08','Vendido',NULL,130.00),(49,1,'2021-06-28 21:20:45','Vendido',NULL,30.00),(50,1,'2021-06-28 21:23:00','Vendido',NULL,130.00),(51,1,'2021-06-28 21:25:14','Vendido',NULL,50.00),(52,1,'2021-06-28 22:04:06','Vendido',NULL,450.00),(53,1,'2021-06-28 22:04:24','Vendido',NULL,NULL),(54,4,'2021-06-29 21:33:14','Vendido',NULL,178.00),(55,1,'2021-08-05 16:07:29','Vendido',NULL,327.00),(56,1,'2022-09-05 18:09:14','Vendido',NULL,160.00),(57,1,'2022-09-05 18:40:04','Vendido',NULL,50.00),(58,1,'2022-09-12 23:31:53','Vendido',NULL,210.00);
+INSERT INTO `factura` VALUES (1,1,'2021-05-28 11:06:26','Vendido',NULL,715.00),(2,1,'2021-06-23 11:06:26','Vendido',NULL,330.00),(3,1,'2021-06-25 22:59:56','Vendido',NULL,70.00),(4,1,'2021-06-25 23:01:41','Vendido',NULL,160.00),(5,1,'2021-06-25 23:01:58','Vendido',NULL,160.00),(6,1,'2021-06-25 23:04:34','Vendido',NULL,70.00),(7,1,'2021-06-26 17:21:02','Vendido',NULL,243.00),(8,1,'2021-06-27 00:00:02','Vendido',NULL,80.00),(9,1,'2021-06-27 00:02:17','Vendido',NULL,30.00),(10,1,'2021-06-27 00:05:18','Vendido',NULL,30.00),(11,1,'2021-06-27 00:07:13','Vendido',NULL,40.00),(12,1,'2021-06-27 00:08:01','Vendido',NULL,40.00),(13,1,'2021-06-27 00:14:19','Vendido',NULL,310.00),(14,1,'2021-06-28 09:53:10','Vendido',NULL,140.00),(15,1,'2021-06-28 10:13:10','Vendido',NULL,40.00),(16,1,'2021-06-28 10:35:02','Vendido',NULL,150.00),(17,1,'2021-06-28 10:35:27','Vendido',NULL,30.00),(18,1,'2021-06-28 10:38:08','Vendido',NULL,180.00),(19,1,'2021-06-28 10:43:33','Vendido',NULL,160.00),(20,1,'2021-06-28 10:43:55','Vendido',NULL,110.00),(21,1,'2021-06-28 10:46:06','Vendido',NULL,150.00),(22,1,'2021-06-28 10:51:25','Vendido',NULL,140.00),(23,1,'2021-06-28 10:53:23','Vendido',NULL,60.00),(24,1,'2021-06-28 10:54:42','Vendido',NULL,140.00),(25,1,'2021-06-28 10:54:58','Vendido',NULL,80.00),(26,1,'2021-06-28 10:58:53','Vendido',NULL,270.00),(27,1,'2021-06-28 10:59:01','Vendido',NULL,NULL),(28,1,'2021-06-28 10:59:10','Vendido',NULL,160.00),(29,1,'2021-06-28 11:01:56','Vendido',NULL,50.00),(30,1,'2021-06-28 11:08:11','Vendido',NULL,110.00),(31,1,'2021-06-28 11:18:29','Vendido',NULL,30.00),(32,1,'2021-06-28 16:00:33','Vendido',NULL,100.00),(33,1,'2021-06-28 16:14:59','Vendido',NULL,30.00),(34,1,'2021-06-28 16:15:51','Vendido',NULL,50.00),(35,1,'2021-06-28 16:16:32','Vendido',NULL,30.00),(36,1,'2021-06-28 16:21:20','Vendido',NULL,110.00),(37,1,'2021-06-28 16:25:20','Vendido',NULL,110.00),(38,1,'2021-06-28 16:25:45','Vendido',NULL,110.00),(39,1,'2021-06-28 16:28:16','Vendido',NULL,30.00),(40,1,'2021-06-28 16:29:41','Vendido',NULL,30.00),(41,1,'2021-06-28 16:36:59','Vendido',NULL,30.00),(42,1,'2021-06-28 18:55:06','Vendido',NULL,870.00),(43,1,'2021-06-28 19:00:48','Vendido',NULL,NULL),(44,1,'2021-06-28 19:01:20','Vendido',NULL,30.00),(45,1,'2021-06-28 19:03:35','Vendido',NULL,220.00),(46,1,'2021-06-28 21:14:17','Vendido',NULL,30.00),(47,1,'2021-06-28 21:16:14','Vendido',NULL,30.00),(48,1,'2021-06-28 21:19:08','Vendido',NULL,130.00),(49,1,'2021-06-28 21:20:45','Vendido',NULL,30.00),(50,1,'2021-06-28 21:23:00','Vendido',NULL,130.00),(51,1,'2021-06-28 21:25:14','Vendido',NULL,50.00),(52,1,'2021-06-28 22:04:06','Vendido',NULL,450.00),(53,1,'2021-06-28 22:04:24','Vendido',NULL,NULL),(54,4,'2021-06-29 21:33:14','Vendido',NULL,178.00),(55,1,'2021-08-05 16:07:29','Vendido',NULL,327.00),(56,1,'2022-09-05 18:09:14','Vendido',NULL,160.00),(57,1,'2022-09-05 18:40:04','Vendido',NULL,50.00),(58,1,'2022-09-12 23:31:53','Vendido',NULL,210.00),(59,1,'2022-10-01 19:11:19','Vendido','',NULL),(60,1,'2022-10-01 19:21:20','Vendido','',9.00),(61,1,'2022-10-01 19:22:20','Vendido','',9.00),(62,1,'2022-10-01 19:22:29','Vendido','',110.00),(63,1,'2022-10-02 17:37:56','Vendido','',130.00),(64,1,'2022-10-02 17:39:15','Vendido','',130.00),(65,1,'2022-10-03 00:01:53','Vendido','',9.00),(66,1,'2022-10-03 00:04:44','Vendido','',110.00),(67,1,'2022-10-03 00:06:02','Vendido','',130.00),(68,1,'2022-10-03 00:07:25','Vendido','',130.00),(69,1,'2022-10-03 00:11:46','Vendido','',130.00),(70,1,'2022-10-03 00:11:53','Vendido','',9.00),(71,1,'2022-10-03 00:12:26','Vendido','',30.00),(72,1,'2022-10-03 00:12:44','Vendido','',9.00),(73,1,'2022-10-03 00:13:14','Vendido','',9.00),(74,1,'2022-10-03 11:15:26','Vendido','',9.00),(75,1,'2022-10-03 15:45:12','Vendido','',9.00),(76,1,'2022-10-03 15:46:00','Vendido','',9.00),(77,1,'2022-10-03 15:46:09','Vendido','',9.00),(78,1,'2022-10-03 15:51:40','Vendido','',9.00),(79,1,'2022-10-03 15:52:58','Vendido','',9.00),(80,1,'2022-10-03 15:56:44','Vendido','',9.00),(81,1,'2022-10-03 15:58:30','Vendido','',9.00),(82,1,'2022-10-03 15:58:50','Vendido','',9.00),(83,1,'2022-10-03 15:59:13','Vendido','',9.00),(84,1,'2022-10-03 16:10:59','Vendido','',9.00),(85,1,'2022-10-03 16:15:36','Vendido','',9.00),(86,1,'2022-10-03 16:16:51','Vendido','',9.00),(87,1,'2022-10-03 16:20:52','Vendido','',9.00),(88,1,'2022-10-03 16:23:37','Vendido','',9.00),(89,1,'2022-10-03 16:28:11','Vendido','',9.00),(90,1,'2022-10-03 16:28:46','Vendido','',9.00),(91,1,'2022-10-03 18:27:56','Vendido','',9.00),(92,1,'2022-10-03 18:29:00','Vendido','',9.00),(93,1,'2022-10-03 18:29:21','Vendido','',9.00),(94,1,'2022-10-03 18:55:26','Vendido','',260.00),(95,1,'2022-10-03 19:00:26','Vendido','',9.00),(96,1,'2022-10-03 19:01:30','Vendido','',9.00),(97,1,'2022-10-03 19:07:47','Vendido','',9.00),(98,1,'2022-10-03 19:10:15','Vendido','',9.00),(99,1,'2022-10-03 19:15:05','Vendido','',9.00);
 /*!40000 ALTER TABLE `factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -397,10 +423,11 @@ CREATE TABLE `lote` (
   `precio_mayorista` decimal(8,2) DEFAULT NULL,
   `precio_unidad` decimal(8,2) DEFAULT NULL,
   `estado` varchar(16) DEFAULT NULL,
+  `vence` date DEFAULT NULL,
   PRIMARY KEY (`idlote`),
   KEY `fk_loteproducto_idx` (`idproducto`),
   CONSTRAINT `fk_loteproducto` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idproducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +436,7 @@ CREATE TABLE `lote` (
 
 LOCK TABLES `lote` WRITE;
 /*!40000 ALTER TABLE `lote` DISABLE KEYS */;
-INSERT INTO `lote` VALUES (5,84524930,-1,30.00,40.00,50.00,'No Activo'),(6,34,23,90.00,95.00,110.00,'Activo'),(10,40,19,15.00,18.00,30.00,'Activo'),(12,2,0,20.00,25.00,40.00,'No Activo'),(18,84524931,10,20.00,30.00,50.00,'Activo'),(26,2,7,90.00,110.00,130.00,'Activo'),(27,84524932,89,90.00,80.00,90.00,'Activo'),(28,7879,3,3.00,4.00,5.00,'Activo'),(29,84524933,6,8.00,9.00,88.00,'Activo'),(30,84524934,8,8.00,8.00,8.00,'Activo'),(31,84524935,9,8.00,8.00,8.00,'Activo'),(32,1278471294,6,7.00,7.00,7.00,'Activo'),(33,2,99,9.00,9.00,9.00,'Activo'),(34,42412,20,3.00,15.00,20.00,'Activo'),(35,1278471295,23,20.00,30.00,40.00,'Activo');
+INSERT INTO `lote` VALUES (5,84524930,-1,30.00,40.00,50.00,'No Activo',NULL),(6,34,21,90.00,95.00,110.00,'Activo',NULL),(10,40,18,15.00,18.00,30.00,'Activo',NULL),(12,2,0,20.00,25.00,40.00,'No Activo',NULL),(18,84524931,10,20.00,30.00,50.00,'Activo',NULL),(26,2,0,90.00,110.00,130.00,'No Activo','2023-08-02'),(27,84524932,89,90.00,80.00,90.00,'Activo',NULL),(28,7879,3,3.00,4.00,5.00,'Activo',NULL),(29,84524933,6,8.00,9.00,88.00,'Activo',NULL),(30,84524934,8,8.00,8.00,8.00,'Activo',NULL),(31,84524935,9,8.00,8.00,8.00,'Activo',NULL),(32,1278471294,6,7.00,7.00,7.00,'Activo',NULL),(33,2,68,9.00,9.00,9.00,'Activo','2024-02-02'),(34,42412,20,3.00,15.00,20.00,'Activo',NULL),(35,1278471295,23,20.00,30.00,40.00,'Activo',NULL),(37,2,3,4.00,8.00,9.00,'Activo','2023-06-02'),(38,1278471296,10,5.00,10.00,12.00,'Activo','2023-08-02');
 /*!40000 ALTER TABLE `lote` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -574,7 +601,7 @@ CREATE TABLE `producto` (
   `cantidad_minima` int DEFAULT NULL,
   `estado` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`idproducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=1278471296 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1278471298 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -583,7 +610,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'Bocinas bluetoth ','xcv','100 wts color negro',NULL,5,1,'No Activo'),(2,'Funda de telefono','Samsung s8','silicon color negro',106,20,2,'Activo'),(34,'Funda para telefono','huawei y8','color gris  ',23,30,2,'Activo'),(40,'Cargar para telefono','tipo normal','5 v. color negro',19,20,1,'Activo'),(7879,'jjkhkj','jjkj','kjjkjh',3,23,3,'Activo'),(42412,'cable rojos','mdf','150 mts',20,20,1,'Activo'),(84524930,'Usb tipo c','dxl','color negro, largo de 2mts',NULL,20,2,'Activo'),(84524931,'cargadores ','tipo c','color negro',10,20,1,'Activo'),(84524932,'ñjkjlkj','kjlkjlk','fklhdlkfkl',89,90,3,'Activo'),(84524933,'kjdfkjgj','skjfgkjsdg','gjsdgkjsdjkgg',6,8,8,'Activo'),(84524934,'hgskjhg','hgskjghj','ghdgkjshgkjh',8,8,8,'Activo'),(84524935,'hhjdkhjkg','jhkjh','hjhjkhjh',9,9,9,'Activo'),(1278471294,'hdfkjfgh','jghfjdghj','hgjghjkhge',6,7,7,'Activo'),(1278471295,'mouse','argom tech','color negro',23,23,1,'Activo');
+INSERT INTO `producto` VALUES (1,'Bocinas bluetoth ','xcv','100 wts color negro',NULL,5,1,'No Activo'),(2,'Funda de telefono','Samsung s8','silicon color negro',71,20,2,'Activo'),(34,'Funda para telefono','huawei y8','color gris  ',21,30,2,'Activo'),(40,'Cargar para telefono','tipo normal','5 v. color negro',18,20,1,'Activo'),(7879,'jjkhkj','jjkj','kjjkjh',3,23,3,'Activo'),(42412,'cable rojos','mdf','150 mts',20,20,1,'Activo'),(84524930,'Usb tipo c','dxl','color negro, largo de 2mts',NULL,20,2,'Activo'),(84524931,'cargadores ','tipo c','color negro',10,20,1,'Activo'),(84524932,'ñjkjlkj','kjlkjlk','fklhdlkfkl',89,90,3,'Activo'),(84524933,'kjdfkjgj','skjfgkjsdg','gjsdgkjsdjkgg',6,8,8,'Activo'),(84524934,'hgskjhg','hgskjghj','ghdgkjshgkjh',8,8,8,'Activo'),(84524935,'hhjdkhjkg','jhkjh','hjhjkhjh',9,9,9,'Activo'),(1278471294,'hdfkjfgh','jghfjdghj','hgjghjkhge',6,7,7,'Activo'),(1278471295,'mouse','argom tech','color negro',23,23,1,'Activo'),(1278471296,'Penicilina','Inyectable','5 ml',10,8,2,'Activo'),(1278471297,'Panadol','sobres','extra fuerte',NULL,9,2,'Activo');
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -741,11 +768,11 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `consulta_ventas`(
 in id_fac int , 
@@ -771,17 +798,17 @@ case accion
 when 'dia'then 
 select f.idfactura, f.fecha, concat(c.nombre,' ',c.apellido,' ') as cliente, f.total
 from factura f  inner join cliente c on c.idCliente = f.idcliente 
-where date(fecha) = curdate() and  estado ='Vendido' ; 
+where date(f.fecha) = curdate() and  f.estado ='Vendido' ; 
 
 when 'semana'then 
 select f.idfactura, f.fecha, concat(c.nombre,' ',c.apellido,' ') as cliente, f.total
 from factura f  inner join cliente c on c.idCliente = f.idcliente 
-where date(fecha) >= (curdate() - INTERVAL 7 DAY) and estado ='Vendido' ; 
+where date(f.fecha) >= (curdate() - INTERVAL 7 DAY) and f.estado ='Vendido' ; 
 
 when 'mes'then 
 select f.idfactura, f.fecha, concat(c.nombre,' ',c.apellido,' ') as cliente, f.total
 from factura f  inner join cliente c on c.idCliente = f.idcliente 
-where date(fecha) >= (curdate() - INTERVAL 30 DAY) and estado ='Vendido' ; 
+where date(f.fecha) >= (curdate() - INTERVAL 30 DAY) and f.estado ='Vendido' ; 
 
 when 'rango' then  
 select
@@ -831,7 +858,7 @@ where estado ='Vendido' and fecha between fech1 and fech2 group by month(fecha);
 when 'ventas'then 
 select f.idfactura, f.fecha, concat(c.nombre,' ',c.apellidos,' ') as cliente, f.total
 from factura f  inner join cliente c on c.idCliente = f.idcliente 
-where estatus ='v' ; 
+where f.estado ='v' ; 
 
 when 'query' then 
 select d.iddetalle, d.id_factura, d.id_producto, d.cantidad, d.precio, d.subtotal, d.id_lote from  
@@ -950,6 +977,53 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ingreso_ajuste` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ingreso_ajuste`(
+in _nombre varchar(100),
+in _descripcion varchar(120),
+in accion varchar(10)
+)
+begin
+declare exit handler for sqlexception 
+begin
+show errors limit 1;
+resignal;
+rollback;
+end;
+declare exit handler for sqlwarning
+begin 
+show warnings limit 1;
+resignal;
+rollback;
+end;
+start transaction;
+case accion 
+when 'new' then
+insert into ajuste(id,nombre,descripcion)values(1,
+_nombre,_descripcion,_direccion,_diasmora,_mora);
+when 'update' then
+update ajuste set
+nombre=_nombre,descripcion=_descripcion
+where id =1;
+when'view' then
+select *from ajuste;
+end case;
+commit;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ingreso_cliente` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -965,9 +1039,10 @@ in _idcliente int(16),
 in _nombre varchar(60),
 in _apellido varchar(45), 
 in _telefono int(12),
-in _direcccion varchar(60),
+in _direccion varchar(60),
 in _sexo varchar(15),
 in _nit varchar(16),
+in _estado varchar (10),
 in accion varchar(10)
 )
 begin
@@ -986,14 +1061,14 @@ RESIGNAL;
 START TRANSACTION;
 case accion
 when 'new' then  
-insert into cliente (idcliente, nombre, apellido, telefono,direccion, sexo,nit)
-values (_idcliente, _nombre,_apellido,_telefono,_direccion,_sexo,_nit);
+insert into cliente (idcliente, nombre, apellido, telefono,direccion, sexo,nit, estado)
+values (_idcliente, _nombre,_apellido,_telefono,_direccion,_sexo,_nit,_estado);
 
 
 when 'update' then
 update cliente
 set nombre=_nombre, apellido=_apellido, telefono= _telefono,direccion=_direccion, 
- sexo=_sexo, nit=_nit
+ sexo=_sexo, nit=_nit, estado=_estado
   where idcliente = _idcliente;
 
 when 'viewone'then
@@ -1207,7 +1282,7 @@ in _nombre varchar(100),
 in _apellido varchar(100),
 in _direccion varchar(100),
 in _telefono integer(8),
-in _dpi integer(13),
+in _dpi varchar(13),
 in _estado varchar(10),
 in accion varchar(10)
 )
@@ -1247,15 +1322,17 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb3 */ ;
-/*!50003 SET character_set_results = utf8mb3 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ingreso_factura`(
 in _idfactura int(16),
 in _idcliente int(11),
+in _motivo_anulacion varchar(45),
+in _estado varchar(20),
 in accion varchar(10)
 )
 begin
@@ -1274,13 +1351,14 @@ RESIGNAL;
 START TRANSACTION;
 case accion
 when 'new' then  
-insert into factura (idfactura, idcliente,fecha,estado)
-values (_idfactura,_idcliente,current_timestamp(),"Vendido");
+insert into factura (idfactura, idcliente,fecha,motivo_anulacion,estado)
+values (_idfactura,_idcliente,current_timestamp(),_motivo_anulacion,_estado);
+select max(idfactura) as idfactura from factura;
 
 
 when 'update' then
 update factura
-set idcliente=_idcliente, fecha=current_timestamp(), estado= "Vendido"
+set idcliente=_idcliente, fecha=current_timestamp(), estado= _estado, motivo_anulacion=_motivo_anulacion
   where idfactura = _idfactura;
 
 when 'viewone'then
@@ -1313,9 +1391,9 @@ in _idproducto int(16),
 in _cantidad int(16), 
 in _precio_compra decimal(8,2),
 in _precio_mayorista decimal(8,2),
-
 in _precio_unidad decimal(8,2),
 in _estado varchar(16),
+in _vence date,
 in accion varchar(10)
 )
 begin
@@ -1337,18 +1415,18 @@ case accion
 when 'new' then  
 if _idproducto <= 0 then
 select max(idproducto) into codigoproducto from producto;
-insert into lote (idlote, idproducto, cantidad, precio_compra,precio_mayorista,  precio_unidad, estado)
-values (_idlote, codigoproducto,_cantidad,_precio_compra,_precio_mayorista,_precio_unidad, _estado);
+insert into lote (idlote, idproducto, cantidad, precio_compra,precio_mayorista,  precio_unidad, estado,vence)
+values (_idlote, codigoproducto,_cantidad,_precio_compra,_precio_mayorista,_precio_unidad, _estado,_vence);
 elseif _idproducto > 0 then
-insert into lote (idlote, idproducto, cantidad, precio_compra,precio_mayorista, precio_unidad, estado)
-values (_idlote, _idproducto,_cantidad,_precio_compra,_precio_mayorista,_precio_unidad, _estado);
+insert into lote (idlote, idproducto, cantidad, precio_compra,precio_mayorista, precio_unidad, estado,vence)
+values (_idlote, _idproducto,_cantidad,_precio_compra,_precio_mayorista,_precio_unidad, _estado,_vence);
 
 end if; 
 
 when 'update' then
 update lote
 set idproducto=_idproducto, cantidad=_cantidad, precio_compra= _precio_compra,precio_mayorista=_precio_mayorista, 
- precio_unidad=_precio_unidad, estado=_estado
+ precio_unidad=_precio_unidad, estado=_estado, vence=_vence
   where idlote = _idlote;
   
   when 'add' then
@@ -1356,18 +1434,64 @@ update lote
 set  cantidad=cantidad + _cantidad
   where idlote = _idlote and idproducto=_idproducto;
 
-when 'viewone'then
-select *from lote where idlote = _idlote and idproducto=_idproducto;
+when 'view'then
+select concat(p.nombre,' ',p.presentacion,' ',p.especificacion) as nombre, l.*
+from lote l inner join producto p on p.idproducto=l.idproducto 
+where l.idproducto=_idproducto and l.estado="Activo";
 
 when 'viewall' then
 select *from lote;
 
 
 when 'delete'then
-delete  from lote where idlote = _idlote and idproducto=_idproducto;
+delete  from lote where idlote = _idlote ;
 end case;
 commit;
 END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ingreso_modulo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ingreso_modulo`(
+in _idmodulo integer,
+in _nombre varchar(15),
+in accion varchar(10)
+)
+begin 
+declare exit handler for sqlexception
+begin 
+show  errors limit 1;
+resignal;
+rollback;
+end;
+declare exit handler for sqlwarning
+begin
+show warnings limit 1;
+resignal;
+rollback;
+end;
+start transaction;
+case accion 
+when'new' then
+insert into modulo(nombre) values (_nombre);
+when 'update' then
+update modulo set nombre=_nombre where idmodulo=_idmodulo;
+when 'view' then
+select *from modulo;
+end case;
+commit;
+end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -1470,20 +1594,19 @@ cantidad_maxima=_cantidad_maxima, cantidad_minima=_cantidad_minima,
 estado=_estado
   where idproducto = _idproducto;
 
-when 'viewone'then
-select *from producto where idproducto = _idproducto;
-
-when 'viewall' then
-select a.idproducto, a.nombre, a.presentacion, a.especificacion, a.stock, a.cantidad_maxima,
-a.cantidad_minima,a.estado, 
-concat (b.nombre, ' ', b.apellido,'; ',b.compania ) as proveedor,
-c.nombre as colocacion,
-d.idlote, d.cantidad, d.precio_compra,d.precio_mayorista,d.precio_mayor,d.precio_unidad,
-d.estado as statuslote
+when 'viewall'then
+select a.*, count(l.idlote) as lote
  from producto a
+left join  lote l on l.idproducto= a.idproducto  and l.cantidad > 0
+where a.estado = "Activo" group by a.idproducto;
 
- left join  lote d on d.idproducto= a.idproducto and d.estado != "No Activo"
- ;
+when 'view' then
+select a.*, 
+d.idlote, d.cantidad, d.precio_compra,d.precio_mayorista,d.precio_unidad,
+d.estado as statuslote, d.vence
+ from producto a
+left join  lote d on d.idproducto= a.idproducto  and d.cantidad > 0
+where a.estado = "Activo";
 
 
 
@@ -1603,7 +1726,7 @@ delete from usuario where idusuario=_idusuario;
 when 'view' then 
 select *from usuario where idempleado=_idempleado;
 when 'login' then
-select e.nombre, e.apellido, u.idempledo,  u.idusuario from usuario u 
+select e.nombre, e.apellido, u.idempleado,  u.idusuario from usuario u 
 inner join empleado e on e.idempleado=u.idempleado where
 u.usuario = _usuario and u.pass=_pass;
 end case;
@@ -1678,4 +1801,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-24 22:07:22
+-- Dump completed on 2022-10-03 19:18:31

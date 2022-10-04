@@ -6,11 +6,12 @@ this.apellido=cliente.apellido,
 this.telefono=cliente.telefono,
 this.direccion=cliente.direccion,
 this.sexo=cliente.sexo,
-this.nit=cliente.nit
+this.nit=cliente.nit,
+this.estado=cliente.estado
 }
 
 Cliente.create=(cliente,result)=>{
-    sql.query(`call ingreso_cliente(${cliente.idcliente},"${cliente.nombre}","${cliente.apellido}",${cliente.telefono},"${cliente.direccion}","${cliente.sexo}","${cliente.nit}","new");`,
+    sql.query(`call ingreso_cliente(${cliente.idcliente},"${cliente.nombre}","${cliente.apellido}",${cliente.telefono},"${cliente.direccion}","${cliente.sexo}","${cliente.nit}","${cliente.estado}","new");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -23,7 +24,7 @@ Cliente.create=(cliente,result)=>{
 }
 
 Cliente.update=(cliente,result)=>{
-    sql.query(`call ingreso_cliente(${cliente.idcliente},"${cliente.nombre}","${cliente.apellido}",${cliente.telefono},"${cliente.direccion}","${cliente.sexo}","${cliente.nit}","update");`,
+    sql.query(`call ingreso_cliente(${cliente.idcliente},"${cliente.nombre}","${cliente.apellido}",${cliente.telefono},"${cliente.direccion}","${cliente.sexo}","${cliente.nit}","${cliente.estado}","update");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -35,7 +36,7 @@ Cliente.update=(cliente,result)=>{
     });
 }
 Cliente.view=(result)=>{
-    sql.query(`call ingreso_cliente(${null},"${null}","${null}",${null},"${null}","${null}","${null}","view");`,
+    sql.query(`call ingreso_cliente(${null},"${null}","${null}",${null},"${null}","${null}","${null}","${null}","view");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -53,7 +54,7 @@ Cliente.view=(result)=>{
 }
 
 Cliente.delete=(id,result)=>{
-    sql.query(`call ingreso_cliente(${id},"${null}","${null}",${null},"${null}","${null}","${null}","delete");`,
+    sql.query(`call ingreso_cliente(${id},"${null}","${null}",${null},"${null}","${null}","${null}","${null}","delete");`,
     (error, res)=>{
         if(error){
             console.log(error)

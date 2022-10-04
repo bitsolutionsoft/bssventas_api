@@ -4,6 +4,7 @@ const verifyToken=(req, res, next) =>{
 const bearerHeader=req.header("Authorization");
 if(typeof bearerHeader !== "undefined"){
     const bearerToken = bearerHeader.split(" ")[1];
+  
     jwt.verify(bearerToken,"secretKey",(error,authData)=>{
         if(error){
 			console.log(error)
@@ -13,7 +14,7 @@ if(typeof bearerHeader !== "undefined"){
         }
     });
 }else{
-    res.status(403).json({error:"Necesita usar un token de autorización"});
+    res.status(403).json({error:"Necesita usar un token de autorizacioón"});
 }
 }
 module.exports=verifyToken;

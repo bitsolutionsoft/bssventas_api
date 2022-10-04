@@ -12,11 +12,20 @@ module.exports=app=>{
     const proveedor =require('../controller/controller_proveedor');
     const usuario =require("../controller/controller_usuario");
     const permiso =require("../controller/controller_permiso");
+    const modulo=require('../controller/controller_modulo');
+    const informe = require('../controller/controller_informe');
+    const ajuste = require('../controller/controller_ajuste');
     //bienvenida
 app.get("/",(rep,res)=>{
     res.json({message:"Bienvenido a bssventas api version 1.0"})
 });
 
+//informe
+app.post("/informe",verifyToken,informe.getventas);
+//Ajuste
+app.post('/ajuste',verifyToken,ajuste.create);
+app.post('/ajuste/update',verifyToken,ajuste.update);
+app.get('/ajuste/view',ajuste.view)
 //usuario
 app.post("/usuario",verifyToken,usuario.create);
 app.post("/usuario/update",verifyToken,usuario.update);
@@ -49,12 +58,13 @@ app.get("/proveedor/delete/:id",verifyToken,proveedor.delete);
 app.post("/producto",verifyToken,producto.create);
 app.post("/producto/update",verifyToken,producto.update);
 app.get("/producto/view",verifyToken,producto.view);
+app.get("/producto/all/view",verifyToken,producto.viewall);
 app.get("/producto/delete/:id",verifyToken,producto.delete);
 
 //lote
 app.post("/lote",verifyToken,lote.create);
 app.post("/lote/update",verifyToken,lote.update);
-app.get("/lote/view",verifyToken,lote.view);
+app.get("/lote/view/:id",verifyToken,lote.view);
 app.get("/lote/delete/:id",verifyToken,lote.delete);
 //detalle_factura
 app.post("/detalle_factura",verifyToken,detalle_factura.create);
@@ -82,4 +92,9 @@ app.post("/abono_proveedor",verifyToken,abono_proveedor.create);
 app.post("/abono_proveedor/update",verifyToken,abono_proveedor.update);
 app.get("/abono_proveedor/view",verifyToken,abono_proveedor.view);
 app.get("/abono_proveedor/delete/:id",verifyToken,abono_proveedor.delete);
+//modulo
+app.post("/modulo",verifyToken,modulo.create);
+app.post("/modulo/update",verifyToken,modulo.update);
+app.get("/modulo/view",verifyToken,modulo.view);
+app.get("/modulo/delete/:id",verifyToken,modulo.delete);
 };

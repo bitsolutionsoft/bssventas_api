@@ -61,9 +61,10 @@ Permiso.viewone=(id,result)=>{
         }
         if(res[0].length){
           result(null,{message:"Success",res:res[0]});
-        }else{
-          result({error:"not_found", res:error});
+          return
         }
+          result({error:"not_found", res:error});
+        
       });
   }
 Permiso.delete=(id,result)=>{

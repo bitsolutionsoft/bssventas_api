@@ -17,19 +17,21 @@ exports.update=(req,res)=>{
            return
         }
         res.status(500).send({message:"Failed",res:error});
+        return
        }
        res.send(data);
     })
    }
   
 exports.view=(req,res)=>{
-    Lote.view((error,data)=>{
+    Lote.view(req.params.id,(error,data)=>{
        if(error){
         if(error.kind==="not_found"){
            res.status(404).send({message:"Failed",res:error});
            return
         }
         res.status(500).send({message:"Failed",res:error});
+        return
        }
        res.send(data);
     })
@@ -42,6 +44,7 @@ exports.view=(req,res)=>{
                return
             }
             res.status(500).send({message:"Failed",res:error});
+            return
            }
            res.send(data);
     })

@@ -1,7 +1,7 @@
-const Cliente=require('../model/model_cliente');
+const Ajuste=require('../model/model_ajuste');
 
 exports.create=(req,res)=>{
- Cliente.create(new Cliente(req.body),(error,data)=>{
+ Ajuste.create(new Ajuste(req.body),(error,data)=>{
     if(error){
         res.status(500).send({message:"Failed",res:error});
         return
@@ -10,7 +10,7 @@ exports.create=(req,res)=>{
  })
 }
 exports.update=(req,res)=>{
-    Cliente.update(new Cliente(req.body),(error,data)=>{
+    Ajuste.update(new Ajuste(req.body),(error,data)=>{
        if(error){
         if(error.kind==="not_found"){
            res.status(404).send({message:"Failed",res:error});
@@ -24,7 +24,7 @@ exports.update=(req,res)=>{
    }
   
 exports.view=(req,res)=>{
-    Cliente.view((error,data)=>{
+    Ajuste.view((error,data)=>{
        if(error){
         if(error.kind==="not_found"){
            res.status(404).send({message:"Failed",res:error});
@@ -34,18 +34,5 @@ exports.view=(req,res)=>{
         return
        }
        res.send(data);
-    })
-   }
-   exports.delete=(req,res)=>{
-    Cliente.delete(req.params.id,(error,data)=>{
-        if(error){
-            if(error.kind==="not_found"){
-               res.status(404).send({message:"Failed",res:error});
-               return
-            }
-            res.status(500).send({message:"Failed",res:error});
-            return
-           }
-           res.send(data);
     })
    }

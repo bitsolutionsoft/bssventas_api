@@ -6,11 +6,12 @@ this.cantidad=lote.cantidad,
 this.precio_compra=lote.precio_compra,
 this.precio_mayorista=lote.precio_mayorista,
 this.precio_unidad=lote.precio_unidad,
+this.vence=lote.vence,
 this.estado=lote.estado
 }
 
 Lote.create=(lote,result)=>{
-    sql.query(`call ingreso_lote(${lote.idlote},${lote.idproducto},${lote.cantidad},${lote.precio_compra},${lote.precio_mayorista},${lote.precio_unidad},"${lote.estado}","new");`,
+    sql.query(`call ingreso_lote(${lote.idlote},${lote.idproducto},${lote.cantidad},${lote.precio_compra},${lote.precio_mayorista},${lote.precio_unidad},"${lote.estado}", "${lote.vence}","new");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -23,7 +24,7 @@ Lote.create=(lote,result)=>{
 }
 
 Lote.update=(lote,result)=>{
-    sql.query(`call ingreso_lote(${lote.idlote},${lote.idproducto},${lote.cantidad},${lote.precio_compra},${lote.precio_mayorista},${lote.precio_unidad},"${lote.estado}","update");`,
+    sql.query(`call ingreso_lote(${lote.idlote},${lote.idproducto},${lote.cantidad},${lote.precio_compra},${lote.precio_mayorista},${lote.precio_unidad},"${lote.estado}","${lote.vence}","update");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -34,8 +35,8 @@ Lote.update=(lote,result)=>{
             result(null,{message:"Success",res:res});
     });
 }
-Lote.view=(result)=>{
-    sql.query(`call ingreso_lote(${null},${null},${null},${null},${null},${null},"${null}","view");`,
+Lote.view=(id,result)=>{
+    sql.query(`call ingreso_lote(${null},${id},${null},${null},${null},${null},"${null}","2022-02-02","view");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -48,12 +49,12 @@ Lote.view=(result)=>{
             return
         }
         console.log(res)
-        result({error:"not_found",res:res}, null)
+        result({message:"not_found",res:res}, null)
     });
 }
 
 Lote.delete=(id,result)=>{
-    sql.query(`call ingreso_lote(${id},${null},${null},${null},${null},${null},"${null}","delete");`,
+    sql.query(`call ingreso_lote(${id},${null},${null},${null},${null},${null},"${null}","2022-02-02","delete");`,
     (error, res)=>{
         if(error){
             console.log(error)

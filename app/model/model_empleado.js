@@ -10,7 +10,7 @@ this.estado=empleado.estado
 }
 
 Empleado.create=(empleado,result)=>{
-    sql.query(`call ingreso_empleado(${empleado.idempleado},"${empleado.nombre}","${empleado.apellido}","${empleado.direccion}",${empleado.telefono},${empleado.dpi},"${empleado.estado}","new");`,
+    sql.query(`call ingreso_empleado(${empleado.idempleado},"${empleado.nombre}","${empleado.apellido}","${empleado.direccion}",${empleado.telefono},"${empleado.dpi}","${empleado.estado}","new");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -23,7 +23,7 @@ Empleado.create=(empleado,result)=>{
 }
 
 Empleado.update=(empleado,result)=>{
-    sql.query(`call ingreso_empleado(${empleado.idempleado},"${empleado.nombre}","${empleado.apellido}","${empleado.direccion}",${empleado.telefono},${empleado.dpi},"${empleado.estado}","update");`,
+    sql.query(`call ingreso_empleado(${empleado.idempleado},"${empleado.nombre}","${empleado.apellido}","${empleado.direccion}",${empleado.telefono},"${empleado.dpi}","${empleado.estado}","update");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -35,7 +35,7 @@ Empleado.update=(empleado,result)=>{
     });
 }
 Empleado.view=(result)=>{
-    sql.query(`call ingreso_empleado(${null},"${null}","${null}","${null}",${null},${null},"${null}","view");`,
+    sql.query(`call ingreso_empleado(${null},"${null}","${null}","${null}",${null},"${null}","${null}","view");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -53,7 +53,7 @@ Empleado.view=(result)=>{
 }
 
 Empleado.delete=(id,result)=>{
-    sql.query(`call ingreso_empleado(${id},"${null}","${null}","${null}",${null},${null},"${null}","delete");`,
+    sql.query(`call ingreso_empleado(${id},"${null}","${null}","${null}",${null},"${null}","${null}","delete");`,
     (error, res)=>{
         if(error){
             console.log(error)

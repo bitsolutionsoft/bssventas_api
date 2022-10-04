@@ -72,10 +72,12 @@ Usuario.findUser=(usuario,result)=>{
           return;
         }
         if (res[0].length) {
+            console.table(res[0]);
           result(null, { message: "Success", res: res[0] });
-        } else {
+          return
+        } 
           result({ error:"not_found",res:error }, null);
-        }
+        
       }
     );
   }

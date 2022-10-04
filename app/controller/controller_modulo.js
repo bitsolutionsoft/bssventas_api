@@ -1,7 +1,7 @@
-const Cliente=require('../model/model_cliente');
+const Modulo=require('../model/model_modulo');
 
 exports.create=(req,res)=>{
- Cliente.create(new Cliente(req.body),(error,data)=>{
+ Modulo.create(new Modulo(req.body),(error,data)=>{
     if(error){
         res.status(500).send({message:"Failed",res:error});
         return
@@ -10,7 +10,7 @@ exports.create=(req,res)=>{
  })
 }
 exports.update=(req,res)=>{
-    Cliente.update(new Cliente(req.body),(error,data)=>{
+    Modulo.update(new Modulo(req.body),(error,data)=>{
        if(error){
         if(error.kind==="not_found"){
            res.status(404).send({message:"Failed",res:error});
@@ -24,7 +24,7 @@ exports.update=(req,res)=>{
    }
   
 exports.view=(req,res)=>{
-    Cliente.view((error,data)=>{
+    Modulo.view((error,data)=>{
        if(error){
         if(error.kind==="not_found"){
            res.status(404).send({message:"Failed",res:error});
@@ -37,7 +37,7 @@ exports.view=(req,res)=>{
     })
    }
    exports.delete=(req,res)=>{
-    Cliente.delete(req.params.id,(error,data)=>{
+    Modulo.delete(req.params.id,(error,data)=>{
         if(error){
             if(error.kind==="not_found"){
                res.status(404).send({message:"Failed",res:error});

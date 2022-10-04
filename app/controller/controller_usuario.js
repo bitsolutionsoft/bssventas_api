@@ -18,6 +18,7 @@ exports.update=(req,res)=>{
            return
         }
         res.status(500).send({message:"Failed",res:error});
+        return
        }
        res.send(data);
     })
@@ -31,6 +32,7 @@ exports.viewone=(req,res)=>{
            return
         }
         res.status(500).send({message:"Failed",res:error});
+        return
        }
        res.send(data);
     })
@@ -44,13 +46,14 @@ exports.viewone=(req,res)=>{
            return
         }
         res.status(500).send({message:"Failed",res:error});
+        return
        }
        const user={
         id:0,
         nombre:"bssventas",
         cdd:5689
        }
-       jwt.sign({user},'secretkey',(error,token)=>{
+       jwt.sign({user},'secretKey',(error,token)=>{
         data.res[0].token=token;
           res.send(data);
        })
@@ -65,6 +68,7 @@ exports.viewone=(req,res)=>{
                return
             }
             res.status(500).send({message:"Failed",res:error});
+            return
            }
            res.send(data);
     })

@@ -17,6 +17,7 @@ exports.update=(req,res)=>{
            return
         }
         res.status(500).send({message:"Failed",res:error});
+        return
        }
        res.send(data);
     })
@@ -31,6 +32,7 @@ exports.view=(req,res)=>{
            return
         }
         res.status(500).send({message:"Failed",res:error});
+        return
        }
        res.send(data);
     })
@@ -45,6 +47,7 @@ exports.view=(req,res)=>{
            return
         }
         res.status(500).send({message:"Failed",res:error});
+        return
        }
        res.send(data);
     })
@@ -57,6 +60,7 @@ exports.view=(req,res)=>{
                return
             }
             res.status(500).send({message:"Failed",res:error});
+            return
            }
            res.send(data);
     })
