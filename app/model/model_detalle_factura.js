@@ -51,6 +51,24 @@ Detalle.view=(result)=>{
     });
 }
 
+Detalle.viewbyfac=(id,result)=>{
+    sql.query(`call ingreso_detallefactura(${null},${id},${null},${null},${null},${null},"viewxfac");`,
+    (error, res)=>{
+        if(error){
+            console.log(error)
+            result({message:"Failed",res:error},null);
+            return
+        }
+        if(res[0].length){
+            console.table(res[0]);
+            result(null,{message:"Success",res:res[0]});
+            return
+        }
+        console.log(res)
+        result({error:"not_found",res:res}, null)
+    });
+}
+
 Detalle.delete=(id,result)=>{
     sql.query(`call ingreso_detallefactura(${id},${null},${null},${null},${null},${null},"delete");`,
     (error, res)=>{

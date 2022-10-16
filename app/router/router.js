@@ -22,6 +22,7 @@ app.get("/",(rep,res)=>{
 
 //informe
 app.post("/informe",verifyToken,informe.getventas);
+app.post("/informe/masvendido",verifyToken,informe.getmasvendido);
 //Ajuste
 app.post('/ajuste',verifyToken,ajuste.create);
 app.post('/ajuste/update',verifyToken,ajuste.update);
@@ -70,6 +71,7 @@ app.get("/lote/delete/:id",verifyToken,lote.delete);
 app.post("/detalle_factura",verifyToken,detalle_factura.create);
 app.post("/detalle_factura/update",verifyToken,detalle_factura.update);
 app.get("/detalle_factura/view",verifyToken,detalle_factura.view);
+app.get("/detalle_factura/byfac/view/:id",verifyToken,detalle_factura.viewbyfac);
 app.get("/detalle_factura/delete/:id",verifyToken,detalle_factura.delete);
 
 //factura
@@ -77,6 +79,7 @@ app.post("/factura",verifyToken,factura.create);
 app.post("/factura/update",verifyToken,factura.update);
 app.get("/factura/view",verifyToken,factura.view);
 app.get("/factura/delete/:id",verifyToken,factura.delete);
+
 //colocacion
 app.post("/colocacion",verifyToken,colocacion.create);
 app.post("/colocacion/update",verifyToken,colocacion.update);
