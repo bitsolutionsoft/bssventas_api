@@ -2,6 +2,7 @@ const sql =require('../config/Connecction');
 const Proveedor=function(proveedor){
 this.idproveedor=proveedor.idproveedor,
 this.nombre=proveedor.nombre,
+
 this.apellido=proveedor.apellido,
 this.telefono=proveedor.telefono,
 this.compania=proveedor.compania,
