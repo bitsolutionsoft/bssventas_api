@@ -2,6 +2,7 @@ const sql =require('../config/Connecction');
 const Producto=function(producto){
 this.idproducto=producto.idproducto,
 this.codbarr=producto.codbarr,
+this.idproveedor=producto.idproveedor,
 this.nombre=producto.nombre,
 this.presentacion=producto.presentacion,
 this.especificacion=producto.especificacion,
@@ -11,7 +12,7 @@ this.estado=producto.estado
 }
 
 Producto.create=(producto,result)=>{
-    sql.query(`call ingreso_producto(${producto.idproducto},"${producto.codbarr}","${producto.nombre}","${producto.presentacion}","${producto.especificacion}",${producto.cantidad_maxima},${producto.cantidad_minima},"${producto.estado}","new");`,
+    sql.query(`call ingreso_producto(${producto.idproducto},"${producto.codbarr}",${producto.idproveedor},"${producto.nombre}","${producto.presentacion}","${producto.especificacion}",${producto.cantidad_maxima},${producto.cantidad_minima},"${producto.estado}","new");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -24,7 +25,7 @@ Producto.create=(producto,result)=>{
 }
 
 Producto.update=(producto,result)=>{
-    sql.query(`call ingreso_producto(${producto.idproducto},"${producto.codbarr}","${producto.nombre}","${producto.presentacion}","${producto.especificacion}",${producto.cantidad_maxima},${producto.cantidad_minima},"${producto.estado}","update");`,
+    sql.query(`call ingreso_producto(${producto.idproducto},"${producto.codbarr}",${producto.idproveedor},"${producto.nombre}","${producto.presentacion}","${producto.especificacion}",${producto.cantidad_maxima},${producto.cantidad_minima},"${producto.estado}","update");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -36,7 +37,7 @@ Producto.update=(producto,result)=>{
     });
 }
 Producto.view=(result)=>{
-    sql.query(`call ingreso_producto(${null},"${null}","${null}","${null}","${null}",${null},${null},"${null}","view");`,
+    sql.query(`call ingreso_producto(${null},"${null}",${0},"${null}","${null}","${null}",${null},${null},"${null}","view");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -54,7 +55,7 @@ Producto.view=(result)=>{
 }
 
 Producto.viewall=(result)=>{
-    sql.query(`call ingreso_producto(${null},"${null}","${null}","${null}","${null}",${null},${null},"${null}","viewall");`,
+    sql.query(`call ingreso_producto(${null},"${null}",${0},"${null}","${null}","${null}",${null},${null},"${null}","viewall");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -72,7 +73,7 @@ Producto.viewall=(result)=>{
 }
 
 Producto.delete=(id,result)=>{
-    sql.query(`call ingreso_producto(${id},"${null}","${null}","${null}","${null}",${null},${null},"${null}","delete");`,
+    sql.query(`call ingreso_producto(${id},"${null}",${0},"${null}","${null}","${null}",${null},${null},"${null}","delete");`,
     (error, res)=>{
         if(error){
             console.log(error)
