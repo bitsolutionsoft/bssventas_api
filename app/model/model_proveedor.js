@@ -5,13 +5,13 @@ this.nombre=proveedor.nombre,
 
 this.apellido=proveedor.apellido,
 this.telefono=proveedor.telefono,
-this.compania=proveedor.compania,
+this.empresa=proveedor.empresa,
 this.direccion=proveedor.direccion,
 this.estado=proveedor.estado
 }
 
 Proveedor.create=(proveedor,result)=>{
-    sql.query(`call ingreso_proveedor(${proveedor.idproveedor},"${proveedor.nombre}","${proveedor.apellido}",${proveedor.telefono},"${proveedor.direccion}","${proveedor.compania}","${proveedor.estado}","new");`,
+    sql.query(`call ingreso_proveedor(${proveedor.idproveedor},"${proveedor.nombre}","${proveedor.apellido}",${proveedor.telefono},"${proveedor.direccion}","${proveedor.empresa}","${proveedor.estado}","new");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -24,7 +24,7 @@ Proveedor.create=(proveedor,result)=>{
 }
 
 Proveedor.update=(proveedor,result)=>{
-    sql.query(`call ingreso_proveedor(${proveedor.idproveedor},"${proveedor.nombre}","${proveedor.apellido}",${proveedor.telefono},"${proveedor.direccion}","${proveedor.compania}","${proveedor.estado}","update");`,
+    sql.query(`call ingreso_proveedor(${proveedor.idproveedor},"${proveedor.nombre}","${proveedor.apellido}",${proveedor.telefono},"${proveedor.direccion}","${proveedor.empresa}","${proveedor.estado}","update");`,
     (error, res)=>{
         if(error){
             console.log(error)
