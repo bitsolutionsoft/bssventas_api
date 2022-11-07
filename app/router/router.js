@@ -89,11 +89,13 @@ app.get("/colocacion/delete/:id",verifyToken,colocacion.delete);
 app.post("/cuenta_proveedor",verifyToken,cuenta_proveedor.create);
 app.post("/cuenta_proveedor/update",verifyToken,cuenta_proveedor.update);
 app.get("/cuenta_proveedor/view",verifyToken,cuenta_proveedor.view);
+app.get("/cuenta_proveedor/viewxp/:id",verifyToken,cuenta_proveedor.viewxp);
 app.get("/cuenta_proveedor/delete/:id",verifyToken,cuenta_proveedor.delete);
 //abono_proveedor
 app.post("/abono_proveedor",verifyToken,abono_proveedor.create);
 app.post("/abono_proveedor/update",verifyToken,abono_proveedor.update);
 app.get("/abono_proveedor/view",verifyToken,abono_proveedor.view);
+app.get("/abono_proveedor/viewxc/:id",verifyToken,abono_proveedor.viewxc);
 app.get("/abono_proveedor/delete/:id",verifyToken,abono_proveedor.delete);
 //modulo
 app.post("/modulo",verifyToken,modulo.create);

@@ -48,6 +48,24 @@ Cuenta.view=(result)=>{
         result({error:"not_found",res:res}, null)
     });
 }
+Cuenta.viewxp=(id,result)=>{
+    sql.query(`call ingreso_cuenta(${null},${id},"2022-10-10",${null},"viewxp");`,
+    (error, res)=>{
+        if(error){
+            console.log(error)
+            result({message:"Failed",res:error},null);
+            return
+        }
+        if(res[0].length){
+            console.table(res[0]);
+            result(null,{message:"Success",res:res[0]});
+            return
+        }
+        console.log(res)
+        result({error:"not_found",res:res}, null)
+    });
+}
+
 
 Cuenta.delete=(id,result)=>{
     sql.query(`call ingreso_cuenta(${id},${null},"2022-10-10",${null},"delete");`,
