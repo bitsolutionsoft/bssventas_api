@@ -3,12 +3,12 @@ const Abono=function(abono){
 this.idabono=abono.idabono,
 this.idcuenta=abono.idcuenta,
 this.abono=abono.abono,
-this.observacion=abono.observacion,
-this.estado=abono.estado
+this.tipopago=abono.tipopago
+
 }
 
 Abono.create=(abono,result)=>{
-    sql.query(`call ingreso_abono(${abono.idabono},${abono.idcuenta},${abono.abono},"${abono.observacion}","${abono.estado}","new");`,
+    sql.query(`call ingreso_abono(${abono.idabono},${abono.idcuenta},${abono.abono},"${abono.tipopago}","new");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -21,7 +21,7 @@ Abono.create=(abono,result)=>{
 }
 
 Abono.update=(abono,result)=>{
-    sql.query(`call ingreso_abono(${abono.idabono},${abono.idcuenta},${abono.abono},"${abono.observacion}","${abono.estado}","update");`,
+    sql.query(`call ingreso_abono(${abono.idabono},${abono.idcuenta},${abono.abono},"${abono.tipopago}","update");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -33,7 +33,7 @@ Abono.update=(abono,result)=>{
     });
 }
 Abono.view=(result)=>{
-    sql.query(`call ingreso_abono(${null},${null},${null},"${null}","${null}","view");`,
+    sql.query(`call ingreso_abono(${null},${null},${null},"${null}","view");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -50,7 +50,7 @@ Abono.view=(result)=>{
     });
 }
 Abono.viewxc=(id,result)=>{
-    sql.query(`call ingreso_abono(${null},${id},${null},"${null}","${null}","viewxc");`,
+    sql.query(`call ingreso_abono(${null},${id},${null},"${null}","viewxc");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -68,7 +68,7 @@ Abono.viewxc=(id,result)=>{
 }
 
 Abono.delete=(id,result)=>{
-    sql.query(`call ingreso_abono(${id},${null},${null},"${null}","${null}","delete");`,
+    sql.query(`call ingreso_abono(${id},${null},${null},"${null}","delete");`,
     (error, res)=>{
         if(error){
             console.log(error)

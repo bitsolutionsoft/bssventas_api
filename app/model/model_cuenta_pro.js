@@ -3,11 +3,12 @@ const Cuenta=function(cuenta){
 this.idcuenta=cuenta.idcuenta,
 this.idproveedor=cuenta.idproveedor,
 this.fecha=cuenta.fecha,
+this.total=cuenta.total,
 this.estado=cuenta.estado
 }
 
 Cuenta.create=(cuenta,result)=>{
-    sql.query(`call ingreso_cuenta(${cuenta.idcuenta},${cuenta.idproveedor},"${cuenta.fecha}",${cuenta.estado},"new");`,
+    sql.query(`call ingreso_cuenta(${cuenta.idcuenta},${cuenta.idproveedor},"${cuenta.fecha}",${cuenta.total},"${cuenta.estado}","new");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -20,7 +21,7 @@ Cuenta.create=(cuenta,result)=>{
 }
 
 Cuenta.update=(cuenta,result)=>{
-    sql.query(`call ingreso_cuenta(${cuenta.idcuenta},${cuenta.idproveedor},"${cuenta.fecha}",${cuenta.estado},"view");`,
+    sql.query(`call ingreso_cuenta(${cuenta.idcuenta},${cuenta.idproveedor},"${cuenta.fecha}",${cuenta.total},"${cuenta.estado}","update");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -32,7 +33,7 @@ Cuenta.update=(cuenta,result)=>{
     });
 }
 Cuenta.view=(result)=>{
-    sql.query(`call ingreso_cuenta(${null},${null},"2022-10-10",${null},"view");`,
+    sql.query(`call ingreso_cuenta(${null},${null},"2020-02-02",00,"${null}","view");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -49,7 +50,7 @@ Cuenta.view=(result)=>{
     });
 }
 Cuenta.viewxp=(id,result)=>{
-    sql.query(`call ingreso_cuenta(${null},${id},"2022-10-10",${null},"viewxp");`,
+    sql.query(`call ingreso_cuenta(${null},${id},"2022-10-10",${null},"${null}","viewxp");`,
     (error, res)=>{
         if(error){
             console.log(error)
@@ -68,7 +69,7 @@ Cuenta.viewxp=(id,result)=>{
 
 
 Cuenta.delete=(id,result)=>{
-    sql.query(`call ingreso_cuenta(${id},${null},"2022-10-10",${null},"delete");`,
+    sql.query(`call ingreso_cuenta(${id},${null},"2022-10-10",${null},"${null},","delete");`,
     (error, res)=>{
         if(error){
             console.log(error)
