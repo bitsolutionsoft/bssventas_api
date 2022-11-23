@@ -15,6 +15,8 @@ module.exports=app=>{
     const modulo=require('../controller/controller_modulo');
     const informe = require('../controller/controller_informe');
     const ajuste = require('../controller/controller_ajuste');
+    const credito=require("../controller/controller_credito");
+    const abonocredito=require("../controller/controller_abono_credito");
     //bienvenida
 app.get("/",(rep,res)=>{
     res.json({message:"Bienvenido a bssventas api version 1.0"})
@@ -97,6 +99,17 @@ app.post("/abono_proveedor/update",verifyToken,abono_proveedor.update);
 app.get("/abono_proveedor/view",verifyToken,abono_proveedor.view);
 app.get("/abono_proveedor/viewxc/:id",verifyToken,abono_proveedor.viewxc);
 app.get("/abono_proveedor/delete/:id",verifyToken,abono_proveedor.delete);
+//credito
+app.post("/credito",verifyToken,credito.create);
+app.post("/credito/update",verifyToken,credito.update);
+app.get("/credito/view",verifyToken,credito.view);
+app.get("/credito/delete/:id",verifyToken,credito.delete);
+//abono credito
+app.post("/abonocredito",verifyToken,abonocredito.create);
+app.post("/abonocredito/update",verifyToken,abonocredito.update);
+app.get("/abonocredito/view/:id",verifyToken,abonocredito.viewone);
+app.get("/abonocredito/delete/:id",verifyToken,abonocredito.delete);
+
 //modulo
 app.post("/modulo",verifyToken,modulo.create);
 app.post("/modulo/update",verifyToken,modulo.update);
